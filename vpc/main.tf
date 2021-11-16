@@ -1326,3 +1326,4 @@ resource "aws_default_vpc" "this" {
     var.tags,
     var.default_vpc_tags,
   )
+}
