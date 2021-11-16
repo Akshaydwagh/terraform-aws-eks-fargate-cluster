@@ -1,24 +1,24 @@
 variable "cluster_name" {
-  description = "the name of your stack, e.g. \"demo\""
+  default = "demo"
 }
 
 variable "environment" {
-  description = "the name of your environment, e.g. \"prod\""
+ default = "test"
 }
 
 variable "eks_node_group_instance_types" {
-  description  = "Instance type of node group"
+   default = "nord"
 }
 
 
 variable "private_subnets" {
-  description = "List of private subnet IDs"
+   default = "yeah"
 }
 
 variable "public_subnets" {
-  description = "List of private subnet IDs"
+   default = "verr"
 }
 
 variable "fargate_namespace" {
-  description = "Name of fargate selector namespace"
+  default = "fgt"
 }
