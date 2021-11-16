@@ -43,13 +43,14 @@ Create the VPC {
     route_table_id = aws_route_table.PublicRT.id
  }
  }
- Route table Association with Private Subnet's
+ Route table Association with Private Subnets{
  resource "aws_route_table_association" "PrivateRTassociation" {
     subnet_id = aws_subnet.privatesubnets.id
     route_table_id = aws_route_table.PrivateRT.id
  }
  resource "aws_eip" "nateIP" {
    vpc   = true
+ }
  }
  Creating the NAT Gateway using subnet_id and allocation_id {
  resource "aws_nat_gateway" "NATgw" {
