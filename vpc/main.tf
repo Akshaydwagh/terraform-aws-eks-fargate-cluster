@@ -4,10 +4,11 @@ Create the VPC {
    instance_tenancy = "default"
  }
 }
- Create Internet Gateway and attach it to VPC{
+ Create Internet Gateway and attach it to VPC {
  resource "aws_internet_gateway" "IGW" {    # Creating Internet Gateway
     vpc_id =  aws_vpc.Main.id               # vpc_id will be generated after we create VPC
- }}
+ }
+ }
  Create a Public Subnets.
  resource "aws_subnet" "publicsubnets" {    # Creating Public Subnets
    vpc_id =  aws_vpc.Main.id
@@ -26,13 +27,14 @@ Create the VPC {
     gateway_id = aws_internet_gateway.IGW.id
      }
  }}
- Route table for Private Subnet's
+ Route table for Private Subnets {
  resource "aws_route_table" "PrivateRT" {    # Creating RT for Private Subnet
    vpc_id = aws_vpc.Main.id
    route {
    cidr_block = "0.0.0.0/0"             # Traffic from Private Subnet reaches Internet via NAT Gateway
    nat_gateway_id = aws_nat_gateway.NATgw.id
    }
+ }
  }
  Route table Association with Public Subnets{
  resource "aws_route_table_association" "PublicRTassociation" {
