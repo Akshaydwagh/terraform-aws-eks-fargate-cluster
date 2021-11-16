@@ -9,10 +9,11 @@ Create the VPC {
     vpc_id =  aws_vpc.Main.id               # vpc_id will be generated after we create VPC
  }
  }
- Create a Public Subnets.
+ Create a Public Subnets{
  resource "aws_subnet" "publicsubnets" {    # Creating Public Subnets
    vpc_id =  aws_vpc.Main.id
    cidr_block = "${var.public_subnets}"        # CIDR block of public subnets
+ }
  }
  Create a Private Subnet{                   # Creating Private Subnets
  resource "aws_subnet" "privatesubnets" {
@@ -40,7 +41,8 @@ Create the VPC {
  resource "aws_route_table_association" "PublicRTassociation" {
     subnet_id = aws_subnet.publicsubnets.id
     route_table_id = aws_route_table.PublicRT.id
- }}
+ }
+ }
  Route table Association with Private Subnet's
  resource "aws_route_table_association" "PrivateRTassociation" {
     subnet_id = aws_subnet.privatesubnets.id
