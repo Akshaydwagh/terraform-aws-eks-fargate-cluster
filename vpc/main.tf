@@ -19,7 +19,8 @@ Create the VPC {
  resource "aws_subnet" "privatesubnets" {
    vpc_id =  aws_vpc.Main.id
    cidr_block = "${var.private_subnets}"          # CIDR block of private subnets
- }}
+ }
+ }
  Route table for Public Subnets{
  resource "aws_route_table" "PublicRT" {    # Creating RT for Public Subnet
     vpc_id =  aws_vpc.Main.id
@@ -27,7 +28,8 @@ Create the VPC {
     cidr_block = "0.0.0.0/0"               # Traffic from Public Subnet reaches Internet via Internet Gateway
     gateway_id = aws_internet_gateway.IGW.id
      }
- }}
+ }
+ }
  Route table for Private Subnets {
  resource "aws_route_table" "PrivateRT" {    # Creating RT for Private Subnet
    vpc_id = aws_vpc.Main.id
@@ -56,4 +58,5 @@ Create the VPC {
  resource "aws_nat_gateway" "NATgw" {
    allocation_id = aws_eip.nateIP.id
    subnet_id = aws_subnet.publicsubnets.id
- }}
+ }
+ }
